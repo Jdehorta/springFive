@@ -1,6 +1,7 @@
 package com.bolsasdeideas.springboot.web.app.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.management.AttributeValueExp;
@@ -8,6 +9,7 @@ import javax.management.AttributeValueExp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bolsasdeideas.springboot.web.app.models.Usuario;
@@ -40,17 +42,26 @@ public class IndexController {
 		
 		@RequestMapping("/listar")
 		public String listar(Model model) {
-			List<Usuario> usuarios = new ArrayList<>();
-			usuarios.add(new Usuario("Jean", "De Horta", "jeandehorta@outlook.com" ));
-			usuarios.add(new Usuario("Diego", "De Horta", "diegodehorta@outlook.com" ));
-			usuarios.add(new Usuario("Danna", "De Horta", "dannadehorta@outlook.com" ));
-			usuarios.add(new Usuario("Nelis", "Sanchez", "nsanchez@outlook.com" ));
 			
+						
 			model.addAttribute("titulo", "Listado de usuarios");
-			model.addAttribute("usuarios" , usuarios); //arreglo
+			
 			
 			return "listar";
 		}
+		
+		@ModelAttribute("usuarios")
+		public List<Usuario> poblarUsuarios(){
+			List<Usuario> usuarios = Arrays.asList(new Usuario("Jean", "De Horta", "jeandehorta@outlook.com"),
+					new Usuario("Diego", "De Horta", "diegodehorta@outlook.com"),
+					new Usuario("Danna", "De Horta", "dannadehorta@outlook.com" ),
+					new Usuario("Nelis", "Sanchez", "nsanchez@outlook.com"));
+			
+			return usuarios;
+			
+		}
+		
+		
 		
 		
 
