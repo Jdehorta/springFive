@@ -1,5 +1,8 @@
 package com.bolsasdeideas.springboot.web.app.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.management.AttributeValueExp;
 
 import org.springframework.stereotype.Controller;
@@ -28,10 +31,22 @@ public class IndexController {
 			model.addAttribute("usuario", usuario);
 			usuario.setNombre("Jean");
 			usuario.setApellido("De Horta");
+			usuario.setEmail("jeandehorta@outlook.com");
 			
 			model.addAttribute("usuario" , usuario);
 			model.addAttribute("titulo", "Perfil del usuario ".concat(usuario.getNombre()));
 			return "perfil";
 		}
+		
+		@RequestMapping("/listar")
+		public String listar(Model model) {
+			List<Usuario> usuarios = new ArrayList<>();
+			model.addAttribute("titulo", "Listado de usuarios");
+			model.addAttribute("usuarios" , usuarios); //arreglo
+			
+			return "listar";
+		}
+		
+		
 
 }
