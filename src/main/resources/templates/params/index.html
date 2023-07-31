@@ -10,6 +10,8 @@
 		
 		<li> <a th:href="@{/params/string(texto='Hola Jean')}">/params/string?texto=Hola Jean</a></li>
 		<li> <a th:href="@{/params/string(texto='Que tal Diego')}">/params/string?texto=Que tal Diego</a></li>
+		<li> <a th:href="@{/params/mix-params(saludo='Como estas Jean?', numero=7)}">/params/mix-params?saludo=Como estas Jean?&numero=7</a></li>
+        <li> <a th:href="@{/params/mix-params-request(saludo='Como estas Jean?', numero=7)}">/params/mix-params-request?saludo=Como estas Jean?&numero=7</a></li>	
 	</ul>
 
 </body>
